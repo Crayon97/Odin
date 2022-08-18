@@ -19,11 +19,51 @@ function getUserChoice() {
         return
     }
 
-
+    return correctedUserChoice;
 
 }
 
-let retVal = getComputerChoice();
-console.log(retVal)
+function duel(userChoice, computerChoice) {
+    let result = -1
+
+    if (userChoice == computerChoice) {
+        result = 0
+    }
+    else if ((computerChoice + 1) % 3 == userChoice) {
+        result = 1
+    }
+
+    return result
+}
+
+
+
+function printWinner(retVal) {
+    if (retVal == 0) {
+        alert("Its a draw")
+    }
+    else if (retval) {
+        alert("U won")
+    }
+    else {
+        alert("U lost")
+    }
+}
+
+function game() {
+    do {
+        let computerChoice = getComputerChoice()
+        let userChoice = getUserChoice()
+
+        let retVal = duel(userChoice, computerChoice)
+        console.log(retVal)
+
+        printWinner(retVal)
+
+        let again = Number(input("Play again? 1/0?"))
+
+    } while (again == 1)
+
+}
 
 
