@@ -11,20 +11,48 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-    let userChoice = input("Enter Rock, paper or scissor")
+    let userChoice = String(prompt("Enter Rock, paper or scissor"))
     let correctedUserChoice = userChoice.toLowerCase()
 
-    if (correctedUserChoice != 'rock' || correctedUserChoice != 'paper' || correctedUserChoice != 'scissor') {
+    while (correctedUserChoice != 'rock' && correctedUserChoice != 'paper' && correctedUserChoice != 'scissor') {
         alert("Invalid choice entered")
-        return
+        userChoice = String(prompt("Enter Rock, paper or scissor"))
+        correctedUserChoice = userChoice.toLowerCase()
     }
 
     return correctedUserChoice;
 
 }
 
+function decode(computerChoice) {
+    let decoded
+
+    if (computerChoice == 0) decoded = "Rock"
+    else if (computerChoice == 1) decoded = "Paper"
+    else decoded = "Scissor"
+
+    return decoded
+}
+
+function encode(userChoice) {
+    let retVal = 2
+    if (userChoice == 'rock') {
+        retVal = 0
+    }
+    else if (userChoice == 'paper') {
+        retVal = 1
+    }
+    else {
+
+    }
+
+    return retVal
+}
+
 function duel(userChoice, computerChoice) {
     let result = -1
+
+    alert("Computer selected choice is " + decode(computerChoice))
 
     if (userChoice == computerChoice) {
         result = 0
@@ -33,16 +61,18 @@ function duel(userChoice, computerChoice) {
         result = 1
     }
 
+    console.log(decode(computerChoice))
+    console.log(decode(userChoice))
+    console.log(result)
+
     return result
 }
-
-
 
 function printWinner(retVal) {
     if (retVal == 0) {
         alert("Its a draw")
     }
-    else if (retval) {
+    else if (retVal == 1) {
         alert("U won")
     }
     else {
@@ -51,19 +81,25 @@ function printWinner(retVal) {
 }
 
 function game() {
+    console.log("starting")
+    let again = 0
     do {
         let computerChoice = getComputerChoice()
         let userChoice = getUserChoice()
 
-        let retVal = duel(userChoice, computerChoice)
+        let encodedUserChoice = encode(userChoice)
+        let retVal = duel(encodedUserChoice, computerChoice)
         console.log(retVal)
 
         printWinner(retVal)
 
-        let again = Number(input("Play again? 1/0?"))
+        again = Number(prompt("Play again? 1/0?"))
+
+        console.log(again)
+        console.log(again == 1)
 
     } while (again == 1)
 
 }
 
-
+game()
