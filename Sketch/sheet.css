@@ -4,3 +4,9 @@
     margin: auto;
     vertical-align: middle;
 }
+
+.divClass:hover {
+    background-color: aqua !important;
+    /* transition-delay: 1s !important; */
+    transition: 0.3s;
+}

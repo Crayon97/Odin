@@ -11,7 +11,7 @@ const container = document.querySelector('#containerId')
 
 for (let i = 0; i < 16; i++) {
     const div = document.createElement('div')
-    div.classList.add('divClass' + i)
+    div.classList.add('divClass')
     div.style.width = "90px"
     div.style.height = "90px"
     div.style.borderBlockColor = "black"
@@ -22,5 +22,5 @@ for (let i = 0; i < 16; i++) {
     container.appendChild(div)
 }
 
-container.appendChild(div)
+// container.appendChild(div)
 
